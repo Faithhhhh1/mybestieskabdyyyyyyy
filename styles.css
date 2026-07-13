@@ -141,10 +141,10 @@ main {
 }
 
 .loading-screen.fade-out {
-    opacity: 1;
+    opacity: 3;
     pointer-events: none;
     visibility: hidden;
-    transition: opacity 7s ease;
+    transition: opacity 11s ease;
     }
 
 
