@@ -36,17 +36,10 @@ function showLoading(duration = 4000, fadeDuration = 1000, displayDelay = 1000, 
         pixelFill.style.width = "100%";
     }, 50);
 
-    // Delay fade-out after progress completes
     setTimeout(() => {
-        loadingScreen.classList.add("fade-out");
-        setTimeout(() => {
-            loadingScreen.classList.remove("active", "fade-out");
-            if (callback) {
-                setTimeout(callback, 100); // Small buffer after fade
-            }
-        }, fadeDuration);
-    }, duration + displayDelay); // Delay fade-out by displayDelay
-}
+    loadingScreen.classList.remove("active");
+    if (callback) callback();
+}, duration + displayDelay);
 
 
 /* ---------- Back Button (main.js) ---------- */
@@ -54,7 +47,6 @@ backBtn?.addEventListener("click", () => {
     if (isLoading) return;
     isLoading = true;
     console.log("Back button clicked, navigating to index.html");
-    document.querySelector('.fade-wrapper')?.classList.add('fade-out');
     showLoading(4000, 1000, 1000, () => { // Added 2000ms display delay
         window.location.href = "index.html";
         isLoading = false;
